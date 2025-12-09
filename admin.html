@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Yosinxon Salimov</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Admin Login</h2>
+                <p>Enter your credentials to access the admin panel</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required value="yosinxon">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required value="holbi2007">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <!-- <div class="login-hint">
+                    <p><strong>Hint:</strong> Username: <code>yosinxon</code> | Password: <code>holbi2007</code></p>
+                </div> -->
+            </form>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">Yosinxon<span>.</span></a>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="projects.html" class="sidebar-link">
+                    <i class="fas fa-code"></i>
+                    <span>View Projects</span>
+                </a>
+                <a href="#" class="sidebar-link active">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Add Project</span>
+                </a>
+                <a href="#" class="sidebar-link" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="admin-info">
+                    <div class="admin-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="admin-details">
+                        <h4>Yosinxon Salimov</h4>
+                        <p>Administrator</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1>Add New Project</h1>
+                <p>Fill in the details below to add a new project to your portfolio</p>
+            </header>
+            
+            <div class="admin-content">
+                <form id="projectForm" class="project-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectName">Project Name *</label>
+                            <input type="text" id="projectName" placeholder="Enter project name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectCategory">Project Category *</label>
+                            <select id="projectCategory" required>
+                                <option value="">Select category</option>
+                                <option value="web">Web Application</option>
+                                <option value="mobile">Mobile App</option>
+                                <option value="design">UI/UX Design</option>
+                                <option value="ecommerce">E-commerce</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectDescription">Project Description *</label>
+                        <textarea id="projectDescription" placeholder="Describe your project" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectImage">Project Image</label>
+                        <div class="file-upload">
+                            <input type="file" id="projectImage" accept="image/*">
+                            <div class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose project image or drag & drop</span>
+                                <p>PNG, JPG, GIF up to 5MB</p>
+                            </div>
+                        </div>
+                        <div class="file-preview" id="imagePreview"></div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="githubLink">GitHub Repository URL *</label>
+                            <input type="url" id="githubLink" placeholder="https://github.com/username/project" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="liveDemo">Live Demo URL (Vercel) *</label>
+                            <input type="url" id="liveDemo" placeholder="https://project-name.vercel.app" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="technologies">Technologies Used *</label>
+                        <input type="text" id="technologies" placeholder="React, Node.js, MongoDB, etc." required>
+                        <small>Separate technologies with commas</small>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus-circle"></i> Add Project
+                        </button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+                
+                <div class="existing-projects">
+                    <h2>Recently Added Projects</h2>
+                    <div class="projects-list" id="projectsList">
+                        <div class="empty-state">
+                            <i class="fas fa-folder-open"></i>
+                            <p>No projects added yet. Your projects will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
